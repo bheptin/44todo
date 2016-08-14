@@ -11,10 +11,12 @@ $(document).ready(function() {
           "Authorization": "Token token=supadupasecret"
         },
         success: (response) => {
-          var todoHTML = response.data.map((todo) => `<lidata-id=${todo.id}> ${todo.attributes}
-          <input class ="checked" type="checkbox" name="selection">
+          var todoHTML = response.data.map((todo) => `<li data-id=${todo.id} ${todo.attributes}>
+          ${todo.attributes.input}<input class ="checked" type="checkbox" name="selection">
           <button>Delete</button></li>`);
+
           $("#todo").append(todoHTML.join("\n")); ///adds unordered list to
+
         }
       });
 
@@ -28,8 +30,8 @@ $(document).ready(function() {
         },
         success: function (data){
           $.each( function(){
-            todoHTML.append(`<li> data-id=${todo.id} ${todo.attributes}
-            <input class ="checked" type="checkbox" name="selection">
+            todoHTML.append(`<li data-id=${todo.id} ${todo.attributes}>
+            ${todo.attributes.input} <input class ="checked" type="checkbox" name="selection">
             <button>Delete</button></li>`);
           });
 
@@ -44,7 +46,7 @@ $(document).ready(function() {
                 $("#todo li:last").data(response.data.id) ///response=data key///data&id value from server
               },
 
-            })
+            });
             var todoHTML = `<li>${$(this).find("textarea").val()}
             <input class ="checked" type="checkbox" name="selection">
             <button>Delete</button></li>`;
