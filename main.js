@@ -15,19 +15,21 @@ $(document).ready(function() {
           ${todo.attributes.input}<input class ="checked" type="checkbox" name="selection">
           <button>Delete</button></li>`);
 
-          $("#todo").append(todoHTML.join("\n")); ///adds unordered list to
+          ///adding the server info to the todo ul
+          $("#todo").append(todoHTML.join("\n"));
 
         }
       });
 
 
-
+      ///getting info from site back to server
       $.ajax({
         type: "GET",
         url: `${site}/todos`,
         headers: {
           "Authorization": "Token token=supadupasecret"
         },
+        ///function to get data back to server
         success: function (data){
           $.each( function(){
             todoHTML.append(`<li data-id=${todo.id} ${todo.attributes}>
@@ -35,7 +37,8 @@ $(document).ready(function() {
             <button>Delete</button></li>`);
           });
 
-          $("form").submit(function(event){ ////setting form for url
+          ////setting form for url
+          $("form").submit(function(event){
             $.post({
               url: `${site}/todo`,
               headers: {
@@ -43,7 +46,7 @@ $(document).ready(function() {
               },
               data: $(this).serialize(),  ////parameters
               success: function(response){
-                $("#todo li:last").data(response.data.id) ///response=data key///data&id value from server
+                $("#todo li:last").data(response.attributes.id) ///response=data key///data&id value from server
               },
 
             });
