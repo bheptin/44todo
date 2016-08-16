@@ -41,28 +41,6 @@ $(document).ready(function() {
         $("input").val("");
 
       });
-
-
-      ///getting info from site back to server in "realtime"
-      // $.ajax({
-      //   type: "PUT",
-      //   url: `${site}`+ itemId,
-      //   headers: {
-      //     "Authorization": "Token token=supadupasecret"
-      //   },
-      //   ///function to get data back to server
-      //   success: function (data){
-      //     $.each( function(){
-      //       taskHTML.append(`<li data-id=${task.id} ${task.attributes}>
-      //       ${todo.attributes.input} <input class ="checked" type="checkbox" name="selection">
-      //       <button>Delete</button></li>`);
-      //     });
-      //
-      //     ////setting form for url
-      //
-      //
-      //   }
-      // })
-
+      
     })
 })
