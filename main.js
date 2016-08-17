@@ -11,7 +11,7 @@ $(document).ready(function() {
         },
         success: (response) => {
           var taskHTML = response.data.map((task) => `<li data-id=${task.id}> ${task.attributes.todo}
-          <input class ="checked" type="checkbox" name="selection">
+          <input class ="checked" type="checkbox" name="todo[isComplete]">
           <button>Delete</button></li>`);
 
           ///adding the server info to the todo ul
@@ -33,7 +33,7 @@ $(document).ready(function() {
           },
 
         });
-        var moreHTML = `<li>${$(this).find("input").val()} <input class ="checked" type="checkbox" name="selection">
+        var moreHTML = `<li>${$(this).find("input").val()} <input class ="checked" type="checkbox" name="todo[isComplete]">
         <button>Delete</button></li>`;
         $("#todo").append(moreHTML);  ////this makes an html skeleton "this" is the FORM
 
@@ -41,6 +41,6 @@ $(document).ready(function() {
         $("input").val("");
 
       });
-      
+
     })
 })
